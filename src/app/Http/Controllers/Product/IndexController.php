@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Product\ProductRequest;
 use App\Models\Cms\Product;
 use App\Traits\FilterBuilder;
-use App\Traits\PreviewUpload\PreviewUploadAction;
 use Illuminate\Http\Request;
 
 /**
@@ -13,8 +13,7 @@ use Illuminate\Http\Request;
  */
 class IndexController extends Controller
 {
-    use FilterBuilder,
-        PreviewUploadAction;
+    use FilterBuilder;
 
     const FILTER_FIELDS = [
         'id'   => 'equal',
@@ -49,7 +48,9 @@ class IndexController extends Controller
      */
     public function create()
     {
-        return view('product.create');
+        return view('product.create', [
+            'products' => Product::all(),
+        ]);
     }
 
     /**
@@ -78,10 +79,7 @@ class IndexController extends Controller
     public function edit(int $id)
     {
         return view('config.product.edit', [
-            'model'         => Product::find($id),
-            'currency'      => config('presets.currency'),
-            'types'         => Product::getTypes(),
-            'upload_folder' => Product::getUploadFolder(),
+            'model' => Product::find($id),
         ]);
     }
 

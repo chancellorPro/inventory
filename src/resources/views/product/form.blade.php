@@ -9,11 +9,12 @@
     'label' => __('Name'),
 ])
 
-{{-- Description --}}
-@include('layouts.form-fields.text', [
+{{-- Box size --}}
+@include('layouts.form-fields.input', [
     'model' => $currentModel,
-    'name'  => 'description',
-    'label' => __('Description'),
+    'name'  => 'box_size',
+    'label' => __('Box size'),
+    'inputType' => 'number'
 ])
 
 {{-- Description --}}
@@ -21,4 +22,17 @@
     'model' => $currentModel,
     'name'  => 'description',
     'label' => __('Description'),
+])
+
+@include('layouts.form-fields.select2', [
+    'label' => __('Parent product'),
+    'model' => $currentModel,
+    'name' => 'type',
+    'collection' => $products,
+    'id' => 'id',
+    'value' => 'name',
+    'fieldId' => 'asset-form-type',
+    'attrs' => [
+        'data-subtype' => $assetModel->subtype ?? '',
+    ],
 ])

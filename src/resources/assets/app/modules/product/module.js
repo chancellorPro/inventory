@@ -13,6 +13,10 @@ $(document)
  */
 $('.show-form').click(dropZoneInit(PRODUCT_SHOW_FORM));
 
+$('#test').click(function () {
+    console.log('test');
+});
+
 /**
  * Price format
  */

@@ -22,8 +22,6 @@ export default function (EVENT_NAME) {
          */
         const previewURL = document.getElementById('preview-url');
 
-        console.log('dropzoneBuilder');
-
         /**
          * Dropzone initialization
          */

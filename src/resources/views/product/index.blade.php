@@ -48,9 +48,6 @@
             </thead>
             <tbody class="fast-save-page-container">
                 @foreach($data as $item)
-                    @php
-                        $preview_url = \App\Models\Cms\Product::getUploadFolder() . '/' . getSubFolder($item->preview_url) . '/' . $item->preview_url;
-                    @endphp
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>
@@ -71,19 +68,17 @@
                             ])
                         </td>
                         <td>
-                            @if(!$liveProducts->contains($item->id))
-                                @include('common.buttons.edit', [
-                                    'route' => 'product.edit',
-                                    'route_params' => [
-                                        'id' => $item->id,
-                                    ],
-                                    'class' => 'ajax-modal-action show-form',
-                                    'dataset' => [
-                                        'header' => $item->name,
-                                        'event' => 'PRODUCT_SHOW_FORM',
-                                    ],
-                                ])
-                            @endif
+                            @include('common.buttons.edit', [
+                                'route' => 'product.edit',
+                                'route_params' => [
+                                    'id' => $item->id,
+                                ],
+                                'class' => 'ajax-modal-action show-form',
+                                'dataset' => [
+                                    'header' => $item->name,
+                                    'event' => 'PRODUCT_SHOW_FORM',
+                                ],
+                            ])
                             @include('common.buttons.delete', [
                                 'route' => 'product.destroy',
                                 'route_params' => [
