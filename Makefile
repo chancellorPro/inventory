@@ -155,7 +155,7 @@ install: up ## Install application dependencies into application container
 	$(docker_compose_bin) run --rm "$(NODE_CONTAINER_NAME)" npm install
 
 watch: up ## Start watching assets for changes (node)
-	$(docker_compose_bin) run --rm "$(NODE_CONTAINER_NAME)" npm run watch
+	$(docker_compose_bin) run --rm "$(NODE_CONTAINER_NAME)" npm run dev
 
 init: install ## Make full application initialization (install, seed, build assets, etc)
 	$(docker_compose_bin) exec "$(APP_CONTAINER_NAME)" artisan migrate --force --no-interaction -vvv

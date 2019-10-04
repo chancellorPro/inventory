@@ -1,4 +1,3 @@
-@if(empty($route) || Gate::check($route ?? ''))
 <a
     @if(!empty($route))
             @php
@@ -8,22 +7,21 @@
             @endphp
     href="{{ route($route, $route_params ?? []) }}"
     @endif
-    title="{{ $name or '' }}"
-    class="{{ $class or '' }}"
-    id="{{ $id or '' }}"
+    title="{{ $name ?? '' }}"
+    class="{{ $class ?? '' }}"
+    id="{{ $id ?? '' }}"
     @if(!empty($dataset))
         @foreach($dataset as $dataKey => $dataValue)
             data-{{ $dataKey }}="{{ $dataValue }}"
         @endforeach
     @endif
 >
-    <button class="btn {{ $btn_class or '' }}">
+    <button class="btn {{ $btn_class ?? '' }}">
         @if (!empty($btn_body))
             {!! $btn_body !!}
         @else
-            <i class="fa {{ $fa_class or '' }}" aria-hidden="true"></i>
-            {{ $name or '' }}
+            <i class="fa {{ $fa_class ?? '' }}" aria-hidden="true"></i>
+            {{ $name ?? '' }}
         @endif
     </button>
 </a>
-@endif

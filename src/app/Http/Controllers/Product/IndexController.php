@@ -49,11 +49,7 @@ class IndexController extends Controller
      */
     public function create()
     {
-        return view('product.create', [
-            'currency'      => config('presets.currency'),
-            'types'         => Product::getTypes(),
-            'upload_folder' => Product::getUploadFolder(),
-        ]);
+        return view('product.create');
     }
 
     /**

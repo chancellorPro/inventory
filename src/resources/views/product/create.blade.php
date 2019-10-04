@@ -1,7 +1,7 @@
 <form method="POST" action="{{ route('product.store') }}" class="form-horizontal">
     {{ csrf_field() }}
 
-    @include ('config.product.form')
+    @include ('product.form')
 
     <div class="pull-right">
         @include('common.buttons.cancel')

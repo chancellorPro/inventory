@@ -3,39 +3,14 @@
     <div class="nav_menu">
         <nav>
             <div class="nav toggle">
-                <a id="menu" class="wide-lightbox" href="{{ route('menu') }}">
+                <a id="menu" class="wide-lightbox" href="#">
                     <i class="fa fa-bars"></i>
                 </a>
 <!--                <a id="menu_toggle"><i class="fa fa-bars"></i></a>-->
             </div>
 
             <div class="nav top-menu">
-                @php
-                    $bookmarks = Auth::user()->bookmarks();
-                @endphp
-                @foreach(config('menu') as $menuItem)
-                    @if (isset($menuItem['child']))
-                        @foreach($menuItem['child'] as $childItem)
-                            @php
-                                $bookmarkRow = $childItem;
-                                if (isset($bookmarks[$childItem['route']])) {
-                                    $bookmarkRow = $bookmarks[$childItem['route']];
-                                }
-                            @endphp
-                            @if (!empty($bookmarkRow['top']))
-                                @can($childItem['route'] . (isset($childItem['route_params']) ? '/' . implode('/', $childItem['route_params']) : ''))
-                                <div class="top-menu-item">
-                                    <a href="{{ route($childItem['route'], (array)@$childItem['route_params']) }}">
-                                        <i class="fa {{ $childItem['icon'] }}"></i>
-                                        {{ $childItem['name'] }}
-                                    </a>
-                                </div>
-                                @endcan
-                            @endif
-                        @endforeach
-                    @endif
-                @endforeach
-
+            <!--  Menu-->
             </div>
             
             <ul class="nav navbar-nav navbar-right">
