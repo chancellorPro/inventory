@@ -27,12 +27,9 @@
 @include('layouts.form-fields.select2', [
     'label' => __('Parent product'),
     'model' => $currentModel,
-    'name' => 'type',
+    'name' => 'parent_product',
     'collection' => $products,
     'id' => 'id',
     'value' => 'name',
-    'fieldId' => 'asset-form-type',
-    'attrs' => [
-        'data-subtype' => $assetModel->subtype ?? '',
-    ],
+    'addempty' => true,
 ])

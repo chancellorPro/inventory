@@ -8,21 +8,12 @@
     {{-- Create --}}
     @include('common.buttons.create', [
         'route' => 'product.create',
-        'name' => 'Product',
+        'name' => __('Product'),
         'class' => 'ajax-modal-action show-form',
         'dataset' => [
             'header' => __('Create Product'),
             'reload' => 1,
         ],
-    ])
-
-    {{-- Save --}}
-    @include('common.buttons.base', [
-        'route' => 'product.fast-save',
-        'name' => 'Save',
-        'class' => 'fast-save-page',
-        'btn_class' => 'btn-primary btn-sm',
-        'fa_class' => 'fa-save',
     ])
 @endsection
 
@@ -35,12 +26,14 @@
                     <th class="id">@lang('Id')</th>
                     <th>@lang('Name')</th>
                     <th>@lang('Box size')</th>
+                    <th>@lang('Parent product')</th>
                     <th>@lang('Description')</th>
                     <th class="actions">@lang('Actions')</th>
                 </tr>
                 <tr>
                     <th>@include('layouts.filter-col', ['filterType' => 'int', 'field' => 'id'])</th>
                     <th>@include('layouts.filter-col', ['filterType' => 'string', 'field' => 'name'])</th>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th class="filter-actions">@include('layouts.filter-col', ['filterType' => 'actions'])</th>
@@ -61,6 +54,9 @@
                             {{ $item->box_size }}
                         </td>
                         <td>
+                            {{ $item->parent_product ?? '' }}
+                        </td>
+                        <td>
                             @include('layouts.form-fields.input', [
                                 'name' => "product[{$item->id}][description]",
                                 'label' => false,
@@ -76,7 +72,6 @@
                                 'class' => 'ajax-modal-action show-form',
                                 'dataset' => [
                                     'header' => $item->name,
-                                    'event' => 'PRODUCT_SHOW_FORM',
                                 ],
                             ])
                             @include('common.buttons.delete', [

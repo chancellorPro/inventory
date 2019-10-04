@@ -40,7 +40,6 @@ class User extends AbstractBaseModel implements AuthenticatableContract, Authori
      * @var array
      */
     protected $fillable = [
-        'login',
         'name',
         'email',
         'remember_token',

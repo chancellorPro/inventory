@@ -21,10 +21,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['auth'])->group(function () {
 
-    /**
-     * Products
-     */
     Route::resource('product', 'Product\IndexController');
-    Route::put('product-fast-save', 'Product\IndexController@fastSave')->name('product.fast-save');
+    Route::resource('action-log', 'ActionLog\IndexController');
+    Route::resource('partition', 'Partition\IndexController');
+    Route::resource('color', 'Color\IndexController');
+    Route::resource('material', 'Material\IndexController');
+    Route::resource('customer', 'Customer\IndexController');
+    Route::resource('plan', 'Plan\IndexController');
+    Route::resource('user', 'User\IndexController');
 
 });

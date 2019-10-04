@@ -2,10 +2,18 @@
 html , body{
  height:100%;
 }
- 
+
 .full-width {
  width:100%;
  }
+
+.income{
+  text-align: center;
+}
+.income i{
+  color: #fff;
+  font-size: 30px;
+}
 
 .new-row {
     background: #acfaff;
@@ -62,7 +70,7 @@ html , body{
 .table thead tr th,
 .table tbody tr td{
     border-right: 1px solid #f3f3f3;
-} 
+}
 
 .boxed label.control-label, textarea, select {
     width: 100% !important;
@@ -374,7 +382,7 @@ html , body{
 }
 .fa-bitcoin-circle:before {
     content:"\f15a";
-    vertical-align: middle; 
+    vertical-align: middle;
     text-align: center;
     font-size: 15px;
 }
@@ -2619,14 +2627,14 @@ a.btn-danger {
     height: 30px;
     text-align: center;
     padding: 6px 0;
-    border-radius: 15px; 
+    border-radius: 15px;
 }
 .btn-download {
     width: 30px;
     height: 30px;
     text-align: center;
     padding: 6px 0;
-    border-radius: 15px; 
+    border-radius: 15px;
     margin-top: 8px;
 }
 
@@ -3461,7 +3469,7 @@ ul.project_files li a i {
     width: 100%;
     display: inline-block;
     margin: 0;
-} 
+}
 
 .embed-group {
     position: relative;
@@ -4457,7 +4465,7 @@ ul.notifications {
 table thead .checkbox { margin-top:-7px;margin-top:-21px; }
 table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 */
-			
+
 .daterangepicker.xdisplay { width:228px; }
 
 .dataTables_wrapper > .row{
@@ -4521,13 +4529,13 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 
 .carousel-control {
-    
+
   width: 30px;
   height: 30px;
   border-radius: 20px;
   background: #169F85;
   top: 33%;
-  font-size: 20px;    
+  font-size: 20px;
 }
 
 .carousel-control.right {
@@ -4546,7 +4554,7 @@ th.rotate45 {
 }
 
 th.rotate45 > div {
-  transform: 
+  transform:
     translate(5px, 51px)
     rotate(315deg);
   width: 30px;
@@ -4582,7 +4590,7 @@ span.default {
   -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
   animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
 }
-.pulse-button:hover 
+.pulse-button:hover
 {
   -webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
 }

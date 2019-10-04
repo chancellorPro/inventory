@@ -20,14 +20,13 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      *
      * @return void
+     * @throws Exception
      */
     public function run(): void
     {
         foreach ($this->static_users as $login => $password) {
             $this->createStaticUser($login, $password);
         }
-
-        $this->seedModelsBatch();
     }
 
     /**
@@ -44,33 +43,13 @@ class DatabaseSeeder extends Seeder
             $this->log("Create static user model: <comment>{$login}:{$password}</comment>");
 
             factory(User::class)->create([
-                'email'        => $login,
-                'name' => $login,
-                'password'     => $password,
-                'deleted_at'   => null,
+                'email'      => $login . '@gmail.com',
+                'name'       => $login,
+                'password'   => $password,
+                'deleted_at' => null,
             ]);
         } else {
             $this->log("Static user model ({$login}:{$password}) already exists");
-        }
-    }
-
-    /**
-     * Batch models creating.
-     *
-     * @return void
-     */
-    protected function seedModelsBatch(): void
-    {
-        $rules = [
-            User::class => random_int(2, 4),
-        ];
-
-        foreach ($rules as $class_name => $models_count) {
-            $this->log(sprintf(
-                '%s <comment>(%d %s)</comment>', $class_name, $models_count, Str::plural('model', $models_count)
-            ));
-
-            factory($class_name)->times($models_count)->create();
         }
     }
 

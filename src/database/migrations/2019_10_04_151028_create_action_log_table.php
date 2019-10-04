@@ -17,12 +17,14 @@ class CreateActionLogTable extends Migration
             $table->increments('id');
 
             $table->boolean('income')->index();
-            $table->unsignedInteger('color')->nullable();
-            $table->unsignedInteger('material')->nullable();
+            $table->unsignedInteger('product_id')->index();
+            $table->unsignedInteger('color_id')->nullable();
+            $table->unsignedInteger('material_id')->nullable();
             $table->unsignedInteger('count')->nullable();
-            $table->unsignedInteger('partition')->index();
-            $table->unsignedInteger('customer')->nullable();
-            $table->text('description');
+            $table->unsignedInteger('partition_id')->index();
+            $table->unsignedInteger('customer_id')->nullable();
+            $table->unsignedInteger('updated_by')->index();
+            $table->text('description')->nullable();
 
             $table->timestamps();
         });

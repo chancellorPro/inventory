@@ -6,6 +6,6 @@
 >
     <img class="img-responsive {{ $url ? '' : 'no-img' }}"
          src="{{ $url ? Storage::url($url) : '' }}"
-         title="{{ $title or '' }}"
+         title="{{ $title ?? '' }}"
     />
 </div>

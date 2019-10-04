@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\ProductRequest;
-use App\Models\Cms\Product;
+use App\Models\Product;
 use App\Traits\FilterBuilder;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 /**
  * Class IndexController
@@ -26,7 +29,7 @@ class IndexController extends Controller
      *
      * @param Request $request Request
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function index(Request $request)
     {
@@ -44,7 +47,7 @@ class IndexController extends Controller
     /**
      * Create new product view
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function create()
     {
@@ -58,7 +61,7 @@ class IndexController extends Controller
      *
      * @param ProductRequest $request Request
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function store(ProductRequest $request)
     {
@@ -74,12 +77,13 @@ class IndexController extends Controller
      *
      * @param integer $id ID
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function edit(int $id)
     {
-        return view('config.product.edit', [
+        return view('product.edit', [
             'model' => Product::find($id),
+            'products' => Product::all(),
         ]);
     }
 
@@ -89,7 +93,7 @@ class IndexController extends Controller
      * @param ProductRequest $request Request
      * @param integer        $id      ID
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function update(ProductRequest $request, int $id)
     {
@@ -104,7 +108,7 @@ class IndexController extends Controller
      *
      * @param integer $id ID
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function destroy(int $id)
     {
@@ -123,24 +127,4 @@ class IndexController extends Controller
         return Product::getUploadFolder();
     }
 
-    /**
-     * Fast save
-     *
-     * @param FastSaveRequest $request Request
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function fastSave(FastSaveRequest $request)
-    {
-        $requestData = $request->getProducts();
-        $products    = Product::findOrFail(array_keys($requestData));
-
-        foreach ($products as $product) {
-            $product->update($requestData[$product->id]);
-        }
-
-        return $this->success([
-            'message' => __('Product') . __('common.action.updated'),
-        ]);
-    }
 }

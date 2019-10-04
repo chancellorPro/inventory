@@ -17,13 +17,15 @@ class CreatePartitionsTable extends Migration
             $table->increments('id');
 
             $table->string('name');
-            $table->unsignedInteger('product_id_1')->index();
-            $table->unsignedInteger('color_id_1');
-            $table->unsignedInteger('material_id_1');
-            $table->unsignedInteger('product_id_2')->index();
-            $table->unsignedInteger('color_id_2');
-            $table->unsignedInteger('material_id_2');
-            $table->text('description');
+            $table->unsignedInteger('product_id_1')->nullable();
+            $table->unsignedInteger('color_id_1')->nullable();
+            $table->unsignedInteger('material_id_1')->nullable();
+            $table->unsignedInteger('count_1')->nullable();
+            $table->unsignedInteger('product_id_2')->nullable();
+            $table->unsignedInteger('color_id_2')->nullable();
+            $table->unsignedInteger('count_2')->nullable();
+            $table->unsignedInteger('material_id_2')->nullable();
+            $table->text('description')->nullable();
 
             $table->timestamps();
         });

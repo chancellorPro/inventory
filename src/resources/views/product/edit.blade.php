@@ -2,7 +2,7 @@
     {{ method_field('PATCH') }}
     {{ csrf_field() }}
 
-    @include ('config.product.form', [
+    @include ('product.form', [
         'model' => $model,
     ])
 

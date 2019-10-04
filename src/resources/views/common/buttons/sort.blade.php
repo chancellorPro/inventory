@@ -13,9 +13,9 @@
             @endphp
     href="{{ route($route, $route_params ?? []) }}"
     @endif
-    title="{{ $name or '' }}"
-    class="{{ $class or '' }}"
-    id="{{ $id or '' }}"
+    title="{{ $name ?? '' }}"
+    class="{{ $class ?? '' }}"
+    id="{{ $id ?? '' }}"
     @if(!empty($dataset))
         @foreach($dataset as $dataKey => $dataValue)
             data-{{ $dataKey }}="{{ $dataValue }}"
@@ -26,7 +26,7 @@
     @if(isset($route_params['order']))
             <i class="fa {{$route_params['order'] == 'desc' ? 'fa-sort-up': 'fa-sort-down'}}" aria-hidden="true"></i>
     @endif
-    {{ $name or '' }}
+    {{ $name ?? '' }}
 
 </a>
 @endif

@@ -24,8 +24,8 @@
             @endif
         </label>
     @endif
-    
-    <div class="@if (isset($label) && $label === false) col-md-12 @else col-md-8 @endif col-sm-12">
+
+    <div class="@if (isset($label) && $label === false) col-md-12 @else col-md-6 @endif col-sm-12">
         <input
             type="{{ $inputType ?? 'text' }}"
             class="form-control {{ $class ?? '' }}"

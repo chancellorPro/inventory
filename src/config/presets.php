@@ -51,7 +51,7 @@ return [
     'initial_user_placement_types' => [
         ['id' => 'house',   'name' => 'House'],
         ['id' => 'storage', 'name' => 'Storage/Closet'],
-        
+
     ],
     'initial_user_placement_groups' => [
         ['id' => 'house',   'name' => 'House'],
@@ -224,5 +224,10 @@ return [
         ['id' => 1, 'name' => 'cash only'],
         ['id' => 2, 'name' => 'coins only'],
         ['id' => 3, 'name' => 'cash and coins'],
+    ],
+
+    'transaction_type' => [
+        ['id' => 0, 'name' => 'Income'],
+        ['id' => 1, 'name' => 'Outcome'],
     ],
 ];

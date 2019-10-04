@@ -39,7 +39,7 @@
                 @endif
 
                 @yield('main_container')
-                
+
 
                 @if (Auth::check())
                     @include('includes/footer')

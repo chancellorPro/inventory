@@ -85,13 +85,13 @@
   </div>
   <div class="content">
     <div class="title">
-      <img src="{{ asset('img/laravel-in-docker.png') }}" alt="Laravel in docker" width="400">
+      <img src="{{ asset('img/8532283.jpg') }}" alt="Laravel in docker" width="400">
       <p class="users">
         Users:
         <ul class="users-list">
           @foreach($users as $user)
             @if($user instanceof \App\Models\User)
-              <li>{{ $user->login }}</li>
+              <li>{{ $user->email }}</li>
             @endif
           @endforeach
         </ul>

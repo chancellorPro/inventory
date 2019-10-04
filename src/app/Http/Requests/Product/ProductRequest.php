@@ -24,9 +24,9 @@ class ProductRequest extends FormRequest
     {
         return [
             'name'           => 'required|string|max:150',
-            'description'    => 'required|string',
+            'description'    => 'nullable|string',
             'box_size'       => 'required|numeric',
-            'parent_product' => 'nullable|exists:product,id',
+            'parent_product' => 'nullable|exists:products,id',
         ];
     }
 }
