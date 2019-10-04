@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="{{ url('/') }}" class="site_title"><i class="fa fa-cubes"></i> <span>{{ config('app.name',
+            <a href="{{ url('/') }}" class="site_title"><i class="fa fa-home"></i> <span>{{ config('app.name',
             'Laravel') }}</span></a>
         </div>
         
@@ -22,7 +22,18 @@
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu-section">
                 <ul class="nav side-menu">
-                    <!--  Menu-->
+                    @foreach(config('menu') as $menuItem)
+                        @if (isset($menuItem['child']))
+                            @foreach($menuItem['child'] as $childItem)
+                                <li>
+                                    <a href="{{ route($childItem['route'], (array)@$childItem['route_params']) }}">
+                                        <i class="fa {{ $childItem['icon'] }}"></i>
+                                        {{ $childItem['name'] }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        @endif
+                    @endforeach
                 </ul>
             </div>
         </div>
