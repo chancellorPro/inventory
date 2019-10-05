@@ -22,24 +22,12 @@
     'addempty' => true,
 ])
 
-@include('layouts.form-fields.select2', [
-    'label' => __('Color'),
+@include('layouts.form-fields.input', [
     'model' => $currentModel,
-    'name' => 'color_id',
-    'collection' => $colors,
-    'id' => 'id',
-    'value' => 'name',
-    'addempty' => true,
-])
-
-@include('layouts.form-fields.select2', [
-    'label' => __('Material'),
-    'model' => $currentModel,
-    'name' => 'material_id',
-    'collection' => $materials,
-    'id' => 'id',
-    'value' => 'name',
-    'addempty' => true,
+    'name'  => 'date',
+    'class'  => 'datepicker',
+    'label' => __('Date'),
+    'attrs' => ['autocomplete' => 'off'],
 ])
 
 @include('layouts.form-fields.input', [
@@ -49,14 +37,11 @@
     'label' => __('Count'),
 ])
 
-@include('layouts.form-fields.select2', [
-    'label' => __('Partition'),
+@include('layouts.form-fields.input', [
     'model' => $currentModel,
-    'name' => 'partition_id',
-    'collection' => $partitions,
-    'id' => 'id',
-    'value' => 'name',
-    'addempty' => true,
+    'name'  => 'partition',
+    'inputType' => 'number',
+    'label' => __('Partition'),
 ])
 
 @include('layouts.form-fields.select2', [
@@ -77,7 +62,7 @@
 
 @include('layouts.form-fields.input', [
     'value' => auth()->user()->id,
-    'name'  => 'updated_by',
+    'name'  => 'created_by',
     'label' => false,
     'inputType' => 'hidden',
 ])

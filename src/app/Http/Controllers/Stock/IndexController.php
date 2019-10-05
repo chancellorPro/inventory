@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Material;
+namespace App\Http\Controllers\Stock;
 
 use App\Http\Controllers\Controller;
-use App\Models\Material;
+use App\Models\Stock;
 use App\Traits\FilterBuilder;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
@@ -34,10 +34,12 @@ class IndexController extends Controller
     {
         $data = $this->applyFilter(
             $request,
-            Material::oldest('id')
+            Stock::selectRaw('stock.product_id, stock.partition, stock.count, stock.description, p.count as plan_count')
+            ->leftJoin('plan AS p', 'p.product_id', '=', 'stock.product_id')
+            ->orderBy('p.product_id')
         )->paginate($this->perPage);
 
-        return view('material.index', [
+        return view('stock.index', [
             'data'         => $data,
             'filter'       => $this->getFilter(),
         ]);
@@ -50,21 +52,20 @@ class IndexController extends Controller
      */
     public function create()
     {
-        return view('material.create', [
-            'products' => Material::all(),
+        return view('stock.create', [
+            'products' => Stock::all(),
         ]);
     }
 
     /**
      * Save new product
      *
-     *
      * @param Request $request
      * @return JsonResponse
      */
     public function store(Request $request)
     {
-        Material::create($request->all());
+        Stock::create($request->all());
 
         pushNotify('success', __('Product') . ' ' . __('common.action.added'));
 
@@ -80,9 +81,8 @@ class IndexController extends Controller
      */
     public function edit(int $id)
     {
-        return view('material.edit', [
-            'model' => Material::find($id),
-            'products' => Material::all(),
+        return view('stock.edit', [
+            'model' => Stock::find($id),
         ]);
     }
 
@@ -96,7 +96,7 @@ class IndexController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $resource = Material::findOrFail($id);
+        $resource = Stock::findOrFail($id);
         $resource->update($request->all());
 
         return $this->success();
@@ -111,7 +111,7 @@ class IndexController extends Controller
      */
     public function destroy(int $id)
     {
-        Material::destroy($id);
+        Stock::destroy($id);
 
         return $this->success();
     }

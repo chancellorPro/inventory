@@ -17,7 +17,9 @@ class CreateProductsTable extends Migration
             $table->increments('id');
 
             $table->string('name', 150);
-            $table->unsignedInteger('box_size');
+            $table->unsignedInteger('box_id')->nullable();
+            $table->unsignedInteger('box_size')->nullable();
+            $table->float('box_weight')->nullable();
             $table->unsignedInteger('parent_product')->nullable();
             $table->text('description')->nullable();
 

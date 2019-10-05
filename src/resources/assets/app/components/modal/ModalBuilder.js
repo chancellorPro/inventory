@@ -187,6 +187,13 @@ export default class {
             .append(this._getBody())
             .append(this._getFooter());
 
+        html.find('.datepicker')
+            .datetimepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                minView: '2'
+        });
+
         modalsContainer.append(html);
 
         /**

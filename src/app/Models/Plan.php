@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Class Plan
@@ -23,10 +24,18 @@ class Plan extends Model
      * @var array
      */
     protected $fillable = [
-        'date',
         'product_id',
-        'material_id',
-        'color_id',
+        'count',
     ];
+
+    /**
+     * Product relation
+     *
+     * @return BelongsTo
+     */
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
 
 }

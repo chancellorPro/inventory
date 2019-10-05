@@ -23,11 +23,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('product', 'Product\IndexController');
     Route::resource('action-log', 'ActionLog\IndexController');
-    Route::resource('partition', 'Partition\IndexController');
-    Route::resource('color', 'Color\IndexController');
-    Route::resource('material', 'Material\IndexController');
-    Route::resource('customer', 'Customer\IndexController');
+    Route::resource('stock', 'Stock\IndexController');
     Route::resource('plan', 'Plan\IndexController');
+    Route::resource('customer', 'Customer\IndexController');
     Route::resource('user', 'User\IndexController');
 
 });

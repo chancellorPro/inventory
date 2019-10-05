@@ -51,7 +51,7 @@
                                         (empty($mult) && $selected == $item->{$id} && $selected !==''))
                                         ? "selected" : ""
                                     }} >
-                                {{ $item->{$value} }}
+                                {{ __($item->{$value}) }}
                             </option>
                         @endforeach
                         </optgroup>
@@ -69,7 +69,7 @@
                                     (empty($mult) && $selected == $item->{$id} && $selected !==''))
                                     ? "selected" : ""
                                 }} >
-                            {{ $item->{$value} }}
+                          {{ __($item->{$value}) }}
                         </option>
                     @endforeach
             @endif

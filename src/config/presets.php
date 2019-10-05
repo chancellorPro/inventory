@@ -230,4 +230,9 @@ return [
         ['id' => 0, 'name' => 'Income'],
         ['id' => 1, 'name' => 'Outcome'],
     ],
+
+    'boxes' => [
+        ['id' => 0, 'name' => '0.1'],
+        ['id' => 1, 'name' => '2.3'],
+    ],
 ];

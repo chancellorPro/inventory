@@ -2,24 +2,21 @@
     $currentModel = isset($model) ? $model : null;
 @endphp
 
-{{-- Name --}}
-@include('layouts.form-fields.input', [
+{{-- product --}}
+@include('layouts.form-fields.select2', [
+    'label' => __('Product'),
     'model' => $currentModel,
-    'name'  => 'name',
-    'label' => __('Name'),
+    'name' => 'product_id',
+    'collection' => $products,
+    'id' => 'id',
+    'value' => 'name',
+    'addempty' => true,
 ])
 
-{{-- Box size --}}
+{{-- count --}}
 @include('layouts.form-fields.input', [
     'model' => $currentModel,
-    'name'  => 'box_size',
-    'label' => __('Box size'),
-    'inputType' => 'number'
-])
-
-{{-- Description --}}
-@include('layouts.form-fields.text', [
-    'model' => $currentModel,
-    'name'  => 'description',
-    'label' => __('Description'),
+    'name'  => 'count',
+    'inputType' => 'number',
+    'label' => __('Count'),
 ])

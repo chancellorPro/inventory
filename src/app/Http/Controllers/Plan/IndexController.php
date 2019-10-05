@@ -4,7 +4,12 @@ namespace App\Http\Controllers\Plan;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\ProductRequest;
+use App\Models\Color;
+use App\Models\Customer;
+use App\Models\Material;
+use App\Models\Partition;
 use App\Models\Plan;
+use App\Models\Product;
 use App\Traits\FilterBuilder;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
@@ -52,7 +57,8 @@ class IndexController extends Controller
     public function create()
     {
         return view('plan.create', [
-            'products' => Plan::all(),
+            'products'   => Product::all(),
+            'customers'  => Customer::all(),
         ]);
     }
 
@@ -83,7 +89,8 @@ class IndexController extends Controller
     {
         return view('plan.edit', [
             'model' => Plan::find($id),
-            'products' => Plan::all(),
+            'products'  => Product::all(),
+            'customers' => Customer::all(),
         ]);
     }
 

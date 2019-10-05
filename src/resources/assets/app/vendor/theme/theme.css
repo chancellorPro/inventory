@@ -9,10 +9,11 @@ html , body{
 
 .income{
   text-align: center;
+  vertical-align: middle;
 }
 .income i{
   color: #fff;
-  font-size: 30px;
+  font-size: 18px;
 }
 
 .new-row {

@@ -8,7 +8,7 @@
     {{-- Create --}}
     @include('common.buttons.create', [
         'route' => 'plan.create',
-        'name' => 'Plan',
+        'name' => __('Plan'),
         'class' => 'ajax-modal-action show-form',
         'dataset' => [
             'header' => __('Create plan'),
@@ -23,40 +23,28 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th class="id">@lang('Id')</th>
-                    <th>@lang('Name')</th>
-                    <th>@lang('Box size')</th>
-                    <th>@lang('Description')</th>
+                    <th>@lang('Product')</th>
+                    <th>@lang('Count')</th>
                     <th class="actions">@lang('Actions')</th>
                 </tr>
                 <tr>
                     <th>@include('layouts.filter-col', ['filterType' => 'int', 'field' => 'id'])</th>
                     <th>@include('layouts.filter-col', ['filterType' => 'string', 'field' => 'name'])</th>
-                    <th></th>
-                    <th></th>
                     <th class="filter-actions">@include('layouts.filter-col', ['filterType' => 'actions'])</th>
                 </tr>
             </thead>
             <tbody class="fast-save-page-container">
                 @foreach($data as $item)
                     <tr>
-                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->product->name ?? '' }}</td>
                         <td>
-                            @include('layouts.form-fields.input', [
-                                'name' => "plan[{$item->id}][name]",
-                                'label' => false,
-                                'value' => $item->name ?? ''
-                            ])
-                        </td>
-                        <td>
-                            {{ $item->box_size }}
-                        </td>
-                        <td>
-                            @include('layouts.form-fields.input', [
-                                'name' => "plan[{$item->id}][description]",
-                                'label' => false,
-                                'value' => $item->description ?? ''
-                            ])
+                          <div style="height: 40px;background: #d9534f">
+                            <div class="progress-bar" style="width: {{ $item->progress / $item->count * 100 }}%">
+                              {{ $item->progress / $item->count * 100 }}%
+                            </div>
+                          </div>
+                          <div class="pull-right">{{ $item->count }}</div>
+                          <div class="pull-left">{{ $item->progress }}</div>
                         </td>
                         <td>
                             @include('common.buttons.edit', [

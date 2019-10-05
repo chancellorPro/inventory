@@ -24,8 +24,7 @@
                 <tr>
                     <th class="id">@lang('Income')</th>
                     <th>@lang('Product')</th>
-                    <th>@lang('Color')</th>
-                    <th>@lang('Material')</th>
+                    <th>@lang('Date')</th>
                     <th>@lang('Count')</th>
                     <th>@lang('Partition')</th>
                     <th>@lang('Customer')</th>
@@ -35,8 +34,7 @@
                 <tr>
                     <th>@include('layouts.filter-col', ['filterType' => 'int', 'field' => 'income'])</th>
                     <th>@include('layouts.filter-col', ['filterType' => 'string', 'field' => 'product'])</th>
-                    <th>@include('layouts.filter-col', ['filterType' => 'string', 'field' => 'color'])</th>
-                    <th>@include('layouts.filter-col', ['filterType' => 'string', 'field' => 'material'])</th>
+                    <th>@include('layouts.filter-col', ['filterType' => 'date_range', 'field' => 'created_at'])</th>
                     <th>@include('layouts.filter-col', ['filterType' => 'string', 'field' => 'count'])</th>
                     <th>@include('layouts.filter-col', ['filterType' => 'string', 'field' => 'partition'])</th>
                     <th>@include('layouts.filter-col', ['filterType' => 'string', 'field' => 'customer'])</th>
@@ -47,15 +45,16 @@
             <tbody class="fast-save-page-container">
                 @foreach($data as $item)
                     <tr>
-                        <td class="income" style="{{ $item->income ? 'background:#ff897b' : 'background:#1abb9c' }}">
-                          <i class="fa fa-arrow-{{ $item->income ? 'down' : 'up' }}"></i>
+                        <td class="income" style="{{ $item->income ? 'background:#ff897b' : 'background:#1abb9c' }}" title="{{ $item->income ? __('Outcome') : __('Income') }}">
+                          <b><i>
+                            {{ $item->income ? __('Outcome') : __('Income') }}
+                          </i></b>
                         </td>
                         <td>{{ $item->product->name }}</td>
-                        <td>{{ $item->color->name }}</td>
-                        <td>{{ $item->material->name }}</td>
+                        <td>{{ $item->date }}</td>
                         <td>{{ $item->count }}</td>
-                        <td>{{ $item->partition->name }}</td>
-                        <td>{{ $item->customer->name }}</td>
+                        <td>{{ $item->partition }}</td>
+                        <td>{{ $item->customer->name ?? '' }}</td>
                         <td>{{ $item->description }}</td>
                         <td>
                             @include('common.buttons.edit', [

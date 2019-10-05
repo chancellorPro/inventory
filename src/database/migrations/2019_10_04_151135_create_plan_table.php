@@ -16,10 +16,9 @@ class CreatePlanTable extends Migration
         Schema::create('plan', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->dateTime('date');
-            $table->unsignedInteger('product_id')->index();
-            $table->unsignedInteger('material_id');
-            $table->unsignedInteger('color_id');
+            $table->unsignedInteger('product_id')->unique()->index();
+            $table->unsignedInteger('count');
+            $table->unsignedInteger('progress')->default(0);
 
             $table->timestamps();
         });

@@ -6,20 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * Class ActionLog
+ * Class Stock
  */
-class ActionLog extends Model
+class Stock extends Model
 {
-
-    const INCOME = 0;
-    const OUTOME = 1;
 
     /**
      * Custom table name
      *
      * @var string
      */
-    protected $table = 'action_log';
+    protected $table = 'stock';
+
+    /**
+     * PK
+     *
+     * @var string
+     */
+    protected $primaryKey = 'product_id';
 
     /**
      * Fillable
@@ -27,14 +31,10 @@ class ActionLog extends Model
      * @var array
      */
     protected $fillable = [
-        'date',
-        'income',
         'product_id',
-        'count',
         'partition',
-        'customer_id',
+        'count',
         'description',
-        'created_by',
     ];
 
     /**
@@ -47,13 +47,4 @@ class ActionLog extends Model
         return $this->belongsTo(Product::class, 'product_id');
     }
 
-    /**
-     * Customer relation
-     *
-     * @return BelongsTo
-     */
-    public function customer()
-    {
-        return $this->belongsTo(Customer::class, 'customer_id');
-    }
 }

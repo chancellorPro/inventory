@@ -19,13 +19,11 @@ return [
     [
         'name' => 'Admin',
         'child' => [
-            ['name' => 'Товары', 'route' => 'product.index', 'icon' => 'fa-cubes'],
             ['name' => 'События', 'route' => 'action-log.index', 'icon' => 'fa-history'],
-            ['name' => 'Ячейки', 'route' => 'partition.index', 'icon' => 'fa-th'],
-            ['name' => 'Цвета', 'route' => 'color.index', 'icon' => 'fa-paint-brush'],
-            ['name' => 'Материалы', 'route' => 'material.index', 'icon' => 'fa-puzzle-piece'],
-            ['name' => 'Заказчики', 'route' => 'customer.index', 'icon' => 'fa-fax'],
             ['name' => 'План', 'route' => 'plan.index', 'icon' => 'fa-bullhorn'],
+            ['name' => 'Склад', 'route' => 'stock.index', 'icon' => 'fa-th'],
+            ['name' => 'Товары', 'route' => 'product.index', 'icon' => 'fa-cubes'],
+            ['name' => 'Заказчики', 'route' => 'customer.index', 'icon' => 'fa-fax'],
             ['name' => 'Менеджеры', 'route' => 'user.index', 'icon' => 'fa-users'],
         ],
     ],

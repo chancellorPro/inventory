@@ -35,11 +35,11 @@ class IndexController extends Controller
     {
         $data = $this->applyFilter(
             $request,
-            Product::oldest('id')
-        )->paginate($this->perPage);
+            Product::with('product_ref')->oldest('id')
+        )->get();
 
         return view('product.index', [
-            'data'         => $data,
+            'rows'         => $data,
             'filter'       => $this->getFilter(),
         ]);
     }
@@ -53,6 +53,9 @@ class IndexController extends Controller
     {
         return view('product.create', [
             'products' => Product::all(),
+            'boxes'    => config('presets.boxes'),
+            'colors'    => config('presets.color'),
+            'materials' => config('presets.material'),
         ]);
     }
 
@@ -84,6 +87,9 @@ class IndexController extends Controller
         return view('product.edit', [
             'model' => Product::find($id),
             'products' => Product::all(),
+            'boxes'    => config('presets.boxes'),
+            'colors'    => config('presets.color'),
+            'materials' => config('presets.material'),
         ]);
     }
 
