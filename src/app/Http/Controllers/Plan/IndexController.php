@@ -3,11 +3,7 @@
 namespace App\Http\Controllers\Plan;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Product\ProductRequest;
-use App\Models\Color;
 use App\Models\Customer;
-use App\Models\Material;
-use App\Models\Partition;
 use App\Models\Plan;
 use App\Models\Product;
 use App\Traits\FilterBuilder;
