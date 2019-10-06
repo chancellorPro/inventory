@@ -13,8 +13,6 @@ class IndexController extends AbstractController
      */
     public function index()
     {
-        return view('index', [
-            'users' => User::all(),
-        ]);
+        return redirect('/login');
     }
 }
