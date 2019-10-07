@@ -28,4 +28,5 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('customer', 'Customer\IndexController');
     Route::resource('user', 'User\IndexController');
 
+    Route::get('export', 'ActionLog\IndexController@getExportData')->name('export');
 });

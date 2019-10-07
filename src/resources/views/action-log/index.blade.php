@@ -15,6 +15,19 @@
             'reload' => 1,
         ],
     ])
+
+    {{-- Export --}}
+    @include('common.buttons.save', [
+        'route' => 'export',
+        'name' => __('Export'),
+        'fa_class' => 'fa-save',
+        'class' => '',
+        'dataset' => [
+            'method' => 'GET',
+            'header' => __('Export action'),
+            'reload' => 1,
+        ],
+    ])
 @endsection
 
 @section('content')

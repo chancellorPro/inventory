@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1d50c8d695c3862c826a96512752a99f",
+    "content-hash": "d6bc5a26aeca24611bdc317a169c61cf",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -311,6 +311,43 @@
                 "parser"
             ],
             "time": "2018-03-08T01:11:30+00:00"
+        },
+        {
+            "name": "eugene-melbourne/laravel-csv-generator",
+            "version": "1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Eugene-Melbourne/laravel-csv-generator.git",
+                "reference": "e7f63ff1888be7d2fbaa4a123f2d24e152dec47d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Eugene-Melbourne/laravel-csv-generator/zipball/e7f63ff1888be7d2fbaa4a123f2d24e152dec47d",
+                "reference": "e7f63ff1888be7d2fbaa4a123f2d24e152dec47d",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^5.0",
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "LaravelCsvGenerator": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eugene Melbourne",
+                    "email": "test82987@gmail.com"
+                }
+            ],
+            "description": "CSV export in laravel 5",
+            "time": "2019-02-05T03:27:35+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -4905,7 +4942,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1.3 <7.3"
+        "php": ">=7.1.3 <7.3",
+        "ext-json": "*"
     },
     "platform-dev": []
 }

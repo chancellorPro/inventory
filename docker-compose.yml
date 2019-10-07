@@ -94,7 +94,7 @@ services:
       ROOT_DIR: '/app/public' # App path must equals with php-fpm container path
     volumes:
     - ./src:/app:ro
-    ports: ['80:80']
+    ports: ['9999:80']
     depends_on:
     - *php-fpm-service
     networks:
