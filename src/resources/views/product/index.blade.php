@@ -51,7 +51,7 @@
                         <td>{{ $cnt++ }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->box_size }}</td>
-                        <td>{{ $item->box_id }}</td>
+                        <td>{{ $item->box_id !== null ? $boxes[$item->box_id] : '' }}</td>
                         <td>{{ $item->box_weight }}</td>
                         <td>{{ $item->product_ref->name ?? '' }}</td>
                         <td>{{ $item->description ?? '' }}</td>

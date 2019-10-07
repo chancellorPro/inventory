@@ -34,7 +34,7 @@ class IndexController extends Controller
     {
         $data = $this->applyFilter(
             $request,
-            Stock::selectRaw('stock.product_id, stock.partition, stock.count, stock.description, p.count as plan_count')
+            Stock::selectRaw('stock.product_id, stock.partition, stock.count, stock.description, p.count as plan_count, p.progress')
             ->leftJoin('plan AS p', 'p.product_id', '=', 'stock.product_id')
             ->orderBy('p.product_id')
         )->paginate($this->perPage);

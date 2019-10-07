@@ -85,7 +85,9 @@ class IndexController extends Controller
                 $plan->save();
             }
         } else {
-            $stock->count -= (int)$request->get('count');
+            $stock->update([
+                'count' => $stock->count - (int)$request->get('count')
+            ]);
         }
 
         ActionLog::create($request->all());
@@ -164,7 +166,7 @@ class IndexController extends Controller
             ->leftJoin('plan AS pl', 'pl.product_id', '=', 'action_log.product_id')
             ->leftJoin('customers AS c', 'c.id', '=', 'action_log.customer_id')
             ->whereBetween('action_log.date', [$from, $to])
-            ->where(['income' => ActionLog::INCOME])
+//            ->where(['income' => ActionLog::INCOME])
             ->orderBy('pl_count')
             ->groupBy('action_log.product_id')
             ->get()
