@@ -43,12 +43,9 @@
                 </tr>
             </thead>
             <tbody class="fast-save-page-container">
-            @php
-              $cnt = 1;
-            @endphp
                 @foreach($rows as $item)
                     <tr>
-                        <td>{{ $cnt++ }}</td>
+                        <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->box_size }}</td>
                         <td>{{ $item->box_id !== null ? $boxes[$item->box_id] : '' }}</td>

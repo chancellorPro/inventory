@@ -25,12 +25,9 @@
                 </tr>
             </thead>
             <tbody class="fast-save-page-container">
-            @php
-              $cnt = 1;
-            @endphp
             @foreach($data as $item)
                     <tr>
-                        <td>{{ $cnt++ }}</td>
+                        <td>{{ $item->product_id }}</td>
                         <td>{{ $item->product ? $item->product->name : '' }}</td>
                         <td>{{ $item->partition }}</td>
                         <td>
@@ -47,7 +44,7 @@
                             </div>
                           </div>
                           <div class="pull-right" style="background:#d9534f;color:#fff;padding:2px 5px">@lang('Plan'): {{ $item->plan_count }}</div>
-                          <div class="pull-left" style="background:#1abb9c;color:#fff;padding:2px 5px">@lang('Sent'): {{ $item->progress }}</div>
+                          <div class="pull-left" style="background:#1abb9c;color:#fff;padding:2px 5px">@lang('Sent'): {{ $item->progress - $item->count }}</div>
                           @else
                           {{ $item->count }}
                           @endif

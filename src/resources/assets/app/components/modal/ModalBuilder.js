@@ -187,6 +187,9 @@ export default class {
             .append(this._getBody())
             .append(this._getFooter());
 
+        html.find('.select2').select2();
+        $('#product_id').prev('.select2-container').find('.select2-search__field').focus()
+
         html.find('.datepicker')
             .datetimepicker({
                 format: 'yyyy-mm-dd',

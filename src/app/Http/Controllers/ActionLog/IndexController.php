@@ -118,6 +118,25 @@ class IndexController extends Controller
         ]);
     }
 
+    public function affectPlanSock()
+    {
+//        $plan = Plan::where(['product_id' => (int)$request->get('product_id')])->first();
+//        $stock = Stock::where(['product_id' => (int)$request->get('product_id')])->first();
+//        if ((int)$request->get('income') === ActionLog::INCOME) {
+//            $stock->update([
+//                'count' => $stock->count + (int)$request->get('count')
+//            ]);
+//            if (!empty($plan)) {
+//                $plan->progress += (int)$request->get('count');
+//                $plan->save();
+//            }
+//        } else {
+//            $stock->update([
+//                'count' => $stock->count - (int)$request->get('count')
+//            ]);
+//        }
+    }
+
     /**
      * Update product
      *
@@ -128,6 +147,10 @@ class IndexController extends Controller
      */
     public function update(Request $request, int $id)
     {
+
+        /**
+         * TODO: Affected stock
+         */
         $resource = ActionLog::findOrFail($id);
         $resource->update($request->all());
 

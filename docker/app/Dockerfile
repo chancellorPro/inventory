@@ -56,6 +56,7 @@ RUN set -xe \
         --with-png-dir=/usr/include/ \
         --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-configure bcmath --enable-bcmath \
+    && docker-php-ext-configure php7-zip --enable-php7-zip \
     && docker-php-ext-configure intl --enable-intl \
     && docker-php-ext-configure pcntl --enable-pcntl \
     && docker-php-ext-configure mysqli --with-mysqli \
@@ -67,6 +68,7 @@ RUN set -xe \
     && docker-php-ext-install -j$(nproc) \
         gd \
         bcmath \
+        php7-zip \
         intl \
         pcntl \
         mysqli \
@@ -117,7 +119,7 @@ opcache.enable=1\n" > /usr/local/etc/php/conf.d/opcache.ini \
     && rm -f /docker-entrypoint.sh \
     && rm -f /usr/local/etc/php-fpm.d/*
 
-COPY ./etc/php/php.ini /usr/local/etc/php/php.ini
+COPY ./etc/php/7.2/cli/php.ini /usr/local/etc/php/php.ini
 COPY ./etc/php/php-fpm.conf /usr/local/etc/php-fpm.conf
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
